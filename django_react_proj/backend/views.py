@@ -7,6 +7,7 @@ from .models import *
 
 def index(request):
     return HttpResponse("Checking")
+    # return render(request, "/frontend/client/src//index.js")
 
 class DepartmentView(viewsets.ModelViewSet):
     serializer_class = DepartmentSerializer
