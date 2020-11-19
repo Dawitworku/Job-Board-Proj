@@ -1,5 +1,26 @@
 from django.db import models
 
+class Company(models.Model):
+    name = models.CharField(max_length=40)
+    phone = models.CharField(max_length=20)
+    city = models.CharField(max_length=40)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=40)
+    company = models.ForeignKey(Company, related_name='has_departments', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+        
+
 class User(models.Model):
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
@@ -14,18 +35,9 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Company(models.Model):
-    name = models.CharField(max_length=40)
-    phone = models.CharField(max_length=20)
-    city = models.CharField(max_length=40)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
-class Department(models.Model):
-    name = models.CharField(max_length=40)
-    company = models.ForeignKey(Company, related_name='has_departments', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 class Role(models.Model):
     title = models.CharField(max_length=40)
@@ -33,6 +45,10 @@ class Role(models.Model):
     department = models.ForeignKey(Department, related_name='has_roles', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
 
 class Candidate(models.Model):
     first_name = models.CharField(max_length=40)
@@ -42,4 +58,7 @@ class Candidate(models.Model):
     interviews_had = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"    
 # Create your models here.
