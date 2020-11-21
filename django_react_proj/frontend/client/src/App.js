@@ -5,12 +5,12 @@ import axios from "axios";
 
 function App() {
 
-  const [user, setUser] = useState([]);
+  const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/testdrag/")
+    axios.get("http://localhost:8000/api/departments")
       .then((res) => {
-        setUser(res.data);
+        setDepartments(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -24,12 +24,12 @@ function App() {
         </Board>
 
         <Board id="testboard-2" className="board">
-        {user.map(data => (
+        {departments.map(data => (
             <Card key={data._id} id={data._id} className="card" draggable="true"> 
               <div>
-                <p>{data.firstName}</p>
-                <p>{data.job}</p>
-                <p>{data.boardHome}</p>
+                <p>{data.name}</p>
+                <p>{data.company}</p>
+                <p>{data.tracks}</p>
               </div>
             </Card>
           ))}
