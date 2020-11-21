@@ -5,7 +5,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
     tracks = serializers.PrimaryKeyRelatedField(allow_null=True, read_only=True)
     class Meta:
         model = Department
-        fields = ('name', 'company', 'tracks')
+        fields = ('id', 'name', 'company', 'tracks')
 
 class CompanySerializer(serializers.HyperlinkedModelSerializer):
     tracks = serializers.PrimaryKeyRelatedField(allow_null=True, read_only=True)

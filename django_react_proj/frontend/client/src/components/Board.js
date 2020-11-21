@@ -6,7 +6,7 @@ function Board (props) {
     const [user, setUser] = useState();
 
     useEffect((e) => {
-        axios.get("/api/companies" + props.id)
+        axios.get("/api/departments" + props.id)
             .then((res) => {
                 setUser(res.data);
             })
