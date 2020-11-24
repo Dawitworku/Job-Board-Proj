@@ -16,3 +16,11 @@ class DepartmentView(viewsets.ModelViewSet):
 class CompanyView(viewsets.ModelViewSet):
     serializer_class = CompanySerializer
     queryset = Company.objects.all()
+
+class RoleView(viewsets.ModelViewSet):
+    serializer_class = RoleSerializer
+    queryset = Role.objects.all()
+
+class CandidateView(viewsets.ModelViewSet):
+    serializer_class = CandidateSerializer
+    queryset = Candidate.objects.all()
