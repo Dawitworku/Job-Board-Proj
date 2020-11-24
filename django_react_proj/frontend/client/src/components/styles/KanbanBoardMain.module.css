@@ -1,0 +1,28 @@
+.h3 {
+    display: inline-block;
+}
+
+.boardWrapper {
+    display: inline-block;
+    max-width: 400px;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.board {
+    display: inline-block;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    background-color: #313131;
+    padding: 15px;
+}
+
+.card {
+    padding: 20px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    margin: 15px;
+}
