@@ -21,6 +21,8 @@ from backend import views
 router = routers.DefaultRouter()
 router.register('departments', views.DepartmentView)
 router.register('companies', views.CompanyView)
+router.register('roles', views.RoleView)
+router.register('candidates', views.CandidateView)
 
 
 urlpatterns = [
