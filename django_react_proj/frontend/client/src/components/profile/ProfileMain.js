@@ -9,8 +9,10 @@ const ProfileMain = () => {
         <div>
             <h1>Welcome to Job Boards Home!</h1>
             <ProfileInfo />
-            <Link to="/company">Select Company</Link>
-            <LogoutButton />
+            <Link to="/company">Company Home Page</Link>
+            <div>
+                <LogoutButton />
+            </div>
         </div>
     )
 }

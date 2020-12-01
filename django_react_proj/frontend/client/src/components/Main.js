@@ -2,7 +2,9 @@ import React from 'react';
 import WelcomeMain from './welcome-auth/WelcomeMain';
 import ProfileMain from './profile/ProfileMain';
 import DeptBoardMain from './dept-board/DeptBoardMain';
-import KanbanBoardMain from './kanban-board/KanbanBoardMain';
+import KanbanBoardMarketing from './kanban-board/KanbanBoardMarketing';
+import KanbanBoardSales from './kanban-board/KanbanBoardSales';
+import KanbanBoardIt from './kanban-board/KanbanBoardIt';
 import CompanyMain from './company-info/CompanyMain';
 import { Router } from "@reach/router";
 
@@ -14,7 +16,9 @@ const Main = () => {
             <ProfileMain path="/profile" />
             <CompanyMain path="/company" />
             <DeptBoardMain path="/dept" />
-            <KanbanBoardMain path="kanban" />
+            <KanbanBoardMarketing path="/kanban/marketing" />
+            <KanbanBoardSales path="/kanban/sales" />
+            <KanbanBoardIt path="/kanban/it" />
         </Router>
     );
 }

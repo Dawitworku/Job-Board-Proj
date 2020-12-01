@@ -1,33 +1,24 @@
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import { navigate } from '@reach/router';
 
-function Card(props) {
+function CardIt(props) {
 
-    const [user, setUser] = useState();
-    const [boardHome, setBoardHome] = useState();
+    const [roles, setRoles] = useState("");
 
-    // useEffect((e) => {
-    //     e.preventDefault();
-    //     axios.get("http://localhost:8000/api/testdrag/")
-    //         .then((res) => {
-    //             setUser(res.data);
-    //         })
-    //         .catch((err) => console.log(err));
-    // }, []);
-
-    const updateBoardHome = e => {
-        e.preventDefault();
-        axios.put('http://localhost:8000/api/testdrag/' + props.id, {
-            boardHome: props.id
-        })
-            .then(res => {
-                // setBoardHome(boardHome); //THIS IS NOW WORKING YAY! BUT ONLY AFTER SWITCHING TO BOARD TWO THEN BACK.
-                console.log(res.data)})
-    }
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/roles/1")
+            .then((res) => {
+                setRoles(res.data);
+                console.log(res.data);
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
     const dragStart = e => {
         const target = e.target;
-
+        console.log(target.id);
+        e.dataTransfer.setData('target', target);
         e.dataTransfer.setData('card_id', target.id);
 
         setTimeout(() => {
@@ -39,6 +30,11 @@ function Card(props) {
         e.stopPropagation();
     }
 
+    const onClickIt = props => {
+        navigate("/kanban/it");
+        console.log(roles.id);
+    }
+
     return (
         <div
             id={props.id}
@@ -46,14 +42,14 @@ function Card(props) {
             draggable={props.draggable} //can also set this to false to make an object un draggable
             onDragOver={dragOver}
             className={props.className}
-            onDragEnd={updateBoardHome}
+            onClick={onClickIt}
         >
             { props.children}
         </div>
     )
 }
 
-export default Card;
+export default CardIt;
 
 // i need to create a server attribute called 'boardhome' that can be set/changed onChange or onDrop when that card is placed on to a board. Then, i need to reflect in the app.js render, the attribute and that decides how it is displayed...
 
