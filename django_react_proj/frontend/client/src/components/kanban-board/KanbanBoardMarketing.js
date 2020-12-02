@@ -22,7 +22,14 @@ const KanbanBoardMarketing = () => {
             })
             .catch((err) => console.log(err));
     }, []);
-
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/companies/1")
+            .then((res) => {
+                setCompany(res.data);
+                console.log("company data - " + res.data);
+            })
+            .catch((err) => console.log(err));
+    }, [])
     const popover = (
         <Popover id="popover-basic">
             <Popover.Title as="h3">Company Data</Popover.Title>
@@ -43,7 +50,7 @@ const KanbanBoardMarketing = () => {
         <div>
             <div>
             <Navbar bg="primary" variant="dark">
-                    <Navbar.Brand>Welcome to Job Boards!</Navbar.Brand>
+                    <Navbar.Brand href="/profile">Welcome to Job Boards!</Navbar.Brand>
                     <Nav className="mr-auto">
                     </Nav>
                     <Nav>
