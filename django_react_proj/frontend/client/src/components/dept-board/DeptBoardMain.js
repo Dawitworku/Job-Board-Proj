@@ -154,7 +154,7 @@ const KanbanBoardMain = (props) => {
                     </Board>
                 </div> */}
             </main>
-            <Link to="/profile">Return to Profile</Link>
+            {/* <Link to="/profile">Return to Profile</Link> */}
         </div>
     );
 }

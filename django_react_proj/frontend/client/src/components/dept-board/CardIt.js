@@ -36,7 +36,8 @@ function CardIt(props) {
     }
 
     return (
-        <div
+        <>
+            <div
             id={props.id}
             onDragStart={dragStart}
             draggable={props.draggable} //can also set this to false to make an object un draggable
@@ -45,7 +46,7 @@ function CardIt(props) {
             onClick={onClickIt}
         >
             { props.children}
-        </div>
+        </div></>
     )
 }
 
