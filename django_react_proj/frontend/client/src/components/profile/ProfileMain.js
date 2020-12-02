@@ -9,6 +9,23 @@ import { useAuth0 } from "@auth0/auth0-react";
 const ProfileMain = () => {
 
     const { logout, user, isAuthenticated } = useAuth0();
+
+    const popover = (
+        <Popover id="popover-basic">
+          <Popover.Title as="h3">Popover right</Popover.Title>
+          <Popover.Content>
+            And here's some <strong>amazing</strong> content. It's very engaging.
+            right?
+          </Popover.Content>
+        </Popover>
+      );
+      
+      const Example = () => (
+        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <Button variant="success">Click me to see</Button>
+        </OverlayTrigger>
+      );
+      
     return (
         isAuthenticated && (
             <div>
@@ -22,7 +39,7 @@ const ProfileMain = () => {
                     <Nav>
                         <Nav.Link onClick={() => logout()}>Hello, {user.nickname}! Click here to Log Out!</Nav.Link>
                         &nbsp;
-                        <Navbar.Text><img src={user.picture} alt={user.name} height="45px" /></Navbar.Text>
+                        <Navbar.Text onClick={Example}><img src={user.picture} alt={user.name} height="45px" /></Navbar.Text>
                     </Nav>
                 </Navbar>
                 {/* <div>
